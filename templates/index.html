@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de Performance Étudiante</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Prédiction de Performance Étudiante</h1>
+               <form method="post" action="/predict">
+            <!-- COLUMNS -->
+            
+            <!-- Failures -->
+            <label for="failures">Failures:</label>
+            <input type="number" id="failures" name="failures" min="0" max="4" required>
+            
+            <!-- G1 -->
+            <label for="G1">First Grade (G1):</label>
+            <input type="number" id="G1" name="G1" min="0" max="20" required>
+        
+            <!-- G2 -->
+            <label for="G2">Second Grade (G2):</label>
+            <input type="number" id="G2" name="G2" min="0" max="20" required>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Prédiction: {{ prediction }}</h2>
+        </div>
+        {% endif %}
+        {% if error %}
+        <div class="error">
+            <h2>Erreur: {{ error }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
